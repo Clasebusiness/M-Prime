@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- SEO básico -->
+    <title>Tienda Online | Compra con entrega rápida y reseñas reales</title>
+    <meta
+      name="description"
+      content="Tienda online con productos destacados, precios claros, entrega estimada, valoraciones y compra fácil. Revisa nuestro catálogo y agrega al carrito en segundos."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://tudominio.cl/" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="Tienda Online | Productos con entrega rápida" />
+    <meta
+      property="og:description"
+      content="Explora el catálogo: precio, entrega estimada y valoraciones. Agrega al carrito y compra fácil."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tudominio.cl/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=1200&q=80&auto=format&fit=crop" />
+    <meta name="theme-color" content="#0e0e0e" />
+
+    <style>
+      :root{
+        --bg:#0e0e0e;
+        --panel:#121212;
+        --card:#1a1a1a;
+        --stroke:#2a2a2a;
+        --text:#ffffff;
+        --muted:#bdbdbd;
+        --muted2:#8c8c8c;
+        --brand:#ffffff;
+        --brandText:#000000;
+        --chip:#232323;
+        --shadow: 0 10px 30px rgba(0,0,0,.35);
+        --radius:16px;
+      }
+
+      *{ margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif; }
+      body{ background:var(--bg); color:var(--text); }
+
+      a{ color:inherit; text-decoration:none; }
+      img{ display:block; max-width:100%; height:auto; }
+
+      /* Header */
+      header{
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: linear-gradient(90deg, #111, #1f1f1f);
+        border-bottom: 1px solid var(--stroke);
+        backdrop-filter: blur(8px);
+      }
+
+      .topbar{
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 18px 18px;
+        display:flex;
+        gap:16px;
+        align-items:center;
+        justify-content:space-between;
+      }
+
+      .brand{
+        display:flex;
+        flex-direction:column;
+        gap:4px;
+      }
+      .brand h1{
+        font-size: 1.35rem;
+        letter-spacing: .5px;
+        line-height: 1.1;
+      }
+      .brand p{
+        color: var(--muted2);
+        font-size: .92rem;
+      }
+
+      .actions{
+        display:flex;
+        gap:12px;
+        align-items:center;
+      }
+
+      .search{
+        display:flex;
+        gap:10px;
+        align-items:center;
+        background: rgba(255,255,255,.06);
+        border:1px solid var(--stroke);
+        padding:10px 12px;
+        border-radius: 999px;
+        min-width: 260px;
+      }
+      .search input{
+        width:100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: var(--text);
+        font-size: .95rem;
+      }
+      .search input::placeholder{ color: #8f8f8f; }
+
+      .pill{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        padding:10px 14px;
+        border-radius:999px;
+        border:1px solid var(--stroke);
+        background: rgba(255,255,255,.06);
+        font-weight: 700;
+        cursor:pointer;
+        transition: transform .15s ease, background .2s ease;
+        user-select:none;
+      }
+      .pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); }
+
+      .cartBadge{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        width:22px;
+        height:22px;
+        border-radius:999px;
+        background: var(--brand);
+        color: var(--brandText);
+        font-size:.85rem;
+        font-weight: 800;
+      }
+
+      /* Main */
+      main{
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 26px 18px 70px;
+      }
+
+      .hero{
+        display:grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+
+      .heroCard{
+        background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: var(--shadow);
+        overflow:hidden;
+        position:relative;
+      }
+      .heroCard h2{
+        font-size: 1.35rem;
+        margin-bottom: 8px;
+        letter-spacing:.2px;
+      }
+      .heroCard p{
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .filters{
+        display:flex;
+        gap: 10px;
+        flex-wrap:wrap;
+        margin-top: 14px;
+      }
+      .chip{
+        background: var(--chip);
+        border:1px solid var(--stroke);
+        color: var(--muted);
+        padding: 9px 12px;
+        border-radius: 999px;
+        font-size: .92rem;
+        cursor:pointer;
+        user-select:none;
+        transition: background .2s ease, color .2s ease, transform .15s ease;
+      }
+      .chip:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); color:#eaeaea; }
+      .chip.active{ background: var(--brand); color: var(--brandText); border-color: transparent; font-weight:700; }
+
+      .summary{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .stat{
+        background: var(--panel);
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        padding: 14px;
+      }
+      .stat .k{ color: var(--muted2); font-size:.9rem; margin-bottom: 6px; }
+      .stat .v{ font-size: 1.1rem; font-weight: 800; }
+
+      /* Products grid */
+      .sectionTitle{
+        display:flex;
+        align-items:flex-end;
+        justify-content:space-between;
+        gap: 12px;
+        margin: 26px 0 14px;
+      }
+      .sectionTitle h3{
+        font-size: 1.2rem;
+      }
+      .sectionTitle small{
+        color: var(--muted2);
+      }
+
+      .products{
+        display:grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      @media (max-width: 980px){
+        .hero{ grid-template-columns: 1fr; }
+        .search{ min-width: 0; width: 46vw; }
+        .products{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 560px){
+        .actions{ gap:10px; }
+        .search{ width: 52vw; }
+        .products{ grid-template-columns: 1fr; }
+      }
+
+      .product{
+        background: var(--card);
+        border:1px solid var(--stroke);
+        border-radius: var(--radius);
+        overflow:hidden;
+        box-shadow: 0 8px 24px rgba(0,0,0,.25);
+        transition: transform .18s ease, box-shadow .2s ease;
+      }
+      .product:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 14px 40px rgba(0,0,0,.40);
+      }
+
+      .thumb{
+        position:relative;
+        aspect-ratio: 16/10;
+        overflow:hidden;
+        background:#0b0b0b;
+      }
+      .thumb img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        transform: scale(1.02);
+        transition: transform .25s ease;
+      }
+      .product:hover .thumb img{ transform: scale(1.07); }
+
+      .tag{
+        position:absolute;
+        left: 12px;
+        top: 12px;
+        background: rgba(255,255,255,.92);
+        color:#000;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: .85rem;
+        font-weight: 800;
+      }
+
+      .content{
+        padding: 14px 14px 16px;
+        display:flex;
+        flex-direction:column;
+        gap: 10px;
+      }
+
+      .content h4{
+        font-size: 1.05rem;
+        line-height:1.2;
+      }
+
+      .meta{
+        display:flex;
+        flex-wrap:wrap;
+        gap: 8px;
+      }
+
+      .badge{
+        background: rgba(255,255,255,.06);
+        border:1px solid var(--stroke);
+        color: var(--muted);
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: .9rem;
+      }
+
+      .priceRow{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap: 10px;
+        margin-top: 2px;
+      }
+
+      .price{
+        font-size: 1.15rem;
+        font-weight: 900;
+      }
+      .rating{
+        display:flex;
+        align-items:center;
+        gap: 8px;
+        color: #e6e6e6;
+        font-weight: 700;
+        font-size: .95rem;
+      }
+      .stars{
+        letter-spacing: 1px;
+      }
+
+      .desc{
+        color: var(--muted);
+        line-height: 1.45;
+        font-size: .95rem;
+        min-height: 2.7em;
+      }
+
+      .btnRow{
+        display:flex;
+        gap: 10px;
+        margin-top: 4px;
+      }
+
+      button{
+        appearance:none;
+        border:none;
+        cursor:pointer;
+        font-weight: 900;
+        border-radius: 999px;
+        padding: 10px 14px;
+        transition: transform .15s ease, background .2s ease, opacity .2s ease;
+        user-select:none;
+      }
+
+      .btnPrimary{
+        background: var(--brand);
+        color: var(--brandText);
+        flex: 1;
+      }
+      .btnPrimary:hover{ transform: translateY(-1px); opacity:.92; }
+
+      .btnGhost{
+        background: transparent;
+        color: var(--text);
+        border:1px solid var(--stroke);
+      }
+      .btnGhost:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); }
+
+      /* Footer */
+      footer{
+        border-top: 1px solid var(--stroke);
+        background: #0d0d0d;
+        color: #8b8b8b;
+      }
+      .footerInner{
+        max-width:1200px;
+        margin:0 auto;
+        padding: 22px 18px;
+        display:flex;
+        justify-content:space-between;
+        gap: 12px;
+        flex-wrap:wrap;
+      }
+      .footerInner strong{ color:#d7d7d7; }
+
+      /* Modal simple */
+      dialog{
+        width: min(760px, 92vw);
+        border: 1px solid var(--stroke);
+        background: #111;
+        color: var(--text);
+        border-radius: var(--radius);
+        padding: 0;
+        box-shadow: 0 22px 70px rgba(0,0,0,.6);
+      }
+      dialog::backdrop{ background: rgba(0,0,0,.6); }
+      .modalHead{
+        padding: 14px 16px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        border-bottom: 1px solid var(--stroke);
+        background: rgba(255,255,255,.03);
+      }
+      .modalBody{
+        padding: 14px 16px 18px;
+      }
+      .closeBtn{
+        background: rgba(255,255,255,.08);
+        color: var(--text);
+        border:1px solid var(--stroke);
+        padding: 8px 12px;
+      }
+      .closeBtn:hover{ background: rgba(255,255,255,.12); }
+      .cartList{
+        margin-top: 10px;
+        display:flex;
+        flex-direction:column;
+        gap: 10px;
+      }
+      .cartItem{
+        border:1px solid var(--stroke);
+        background: rgba(255,255,255,.03);
+        border-radius: 14px;
+        padding: 10px 12px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap: 10px;
+      }
+      .cartItem .left{
+        display:flex;
+        flex-direction:column;
+        gap: 4px;
+      }
+      .cartItem small{ color: var(--muted2); }
+      .totals{
+        margin-top: 12px;
+        border-top: 1px solid var(--stroke);
+        padding-top: 12px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap: 12px;
+      }
+      .empty{
+        color: var(--muted2);
+        padding: 12px 0;
+      }
+    </style>
+
+    <!-- JSON-LD (SEO): Organization + ItemList -->
+    <script type="application/ld+json" id="seo-jsonld"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="topbar">
+        <div class="brand">
+          <h1>Tienda Online</h1>
+          <p>Precio claro, entrega estimada y reseñas reales</p>
+        </div>
+
+        <div class="actions">
+          <div class="search" role="search" aria-label="Buscar productos">
+            <span aria-hidden="true">🔎</span>
+            <input id="searchInput" type="search" placeholder="Buscar (ej: audífonos, mochila, cafetera)..." />
+          </div>
+
+          <button class="pill" id="openCartBtn" type="button" aria-label="Abrir carrito">
+            🛒 Carrito <span class="cartBadge" id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Introducción y filtros">
+        <div class="heroCard">
+          <h2>Compra rápido, sin vueltas</h2>
+          <p>
+            Explora productos con <strong>precio</strong>, <strong>entrega estimada</strong> y <strong>valoración</strong>.
+            Agrega al carrito y listo.
+          </p>
+
+          <div class="filters" aria-label="Filtros por categoría">
+            <div class="chip active" data-filter="all">Todos</div>
+            <div class="chip" data-filter="tecnologia">Tecnología</div>
+            <div class="chip" data-filter="hogar">Hogar</div>
+            <div class="chip" data-filter="fitness">Fitness</div>
+            <div class="chip" data-filter="accesorios">Accesorios</div>
+          </div>
+        </div>
+
+        <div class="summary" aria-label="Resumen de tienda">
+          <div class="stat">
+            <div class="k">Envíos</div>
+            <div class="v">Santiago + Regiones</div>
+          </div>
+          <div class="stat">
+            <div class="k">Soporte</div>
+            <div class="v">WhatsApp + Email</div>
+          </div>
+          <div class="stat">
+            <div class="k">Pago</div>
+            <div class="v">Transferencia / WebPay</div>
+          </div>
+          <div class="stat">
+            <div class="k">Confianza</div>
+            <div class="v">Reseñas verificadas</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="sectionTitle">
+        <h3>Catálogo destacado</h3>
+        <small id="resultsCount">Mostrando 10 productos</small>
+      </div>
+
+      <!-- Grid -->
+      <section class="products" id="productsGrid" aria-label="Listado de productos">
+        <!-- Se renderiza por JS -->
+      </section>
+    </main>
+
+    <footer>
+      <div class="footerInner">
+        <div>© <strong>Tienda Online</strong> — Todos los derechos reservados</div>
+        <div>Contacto: <strong>ventas@tudominio.cl</strong> · +56 9 0000 0000</div>
+      </div>
+    </footer>
+
+    <!-- Modal carrito -->
+    <dialog id="cartModal" aria-label="Carrito de compras">
+      <div class="modalHead">
+        <strong>Tu carrito</strong>
+        <button class="closeBtn" id="closeCartBtn" type="button">Cerrar ✕</button>
+      </div>
+      <div class="modalBody">
+        <div id="cartBody"></div>
+      </div>
+    </dialog>
+
+    <script>
+      // =========================
+      // DATA (10+ productos)
+      // =========================
+      const PRODUCTS = [
+        {
+          id: "p1",
+          name: "Audífonos Bluetooth Pro",
+          category: "tecnologia",
+          priceCLP: 29990,
+          delivery: "24–48 hrs en Santiago",
+          rating: 4.7,
+          reviews: 321,
+          tag: "Top ventas",
+          desc: "Sonido nítido, batería de larga duración y estuche de carga compacto.",
+          img: "https://images.unsplash.com/photo-1518441902117-f0a00f9daceb?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p2",
+          name: "Smartwatch Fitness Serie X",
+          category: "fitness",
+          priceCLP: 34990,
+          delivery: "48–72 hrs",
+          rating: 4.5,
+          reviews: 210,
+          tag: "Nuevo",
+          desc: "Monitoreo de actividad, sueño y notificaciones. Ideal para entrenar.",
+          img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p3",
+          name: "Mochila Urbana Anti-robo",
+          category: "accesorios",
+          priceCLP: 24990,
+          delivery: "24–72 hrs",
+          rating: 4.6,
+          reviews: 178,
+          tag: "Segura",
+          desc: "Compartimentos ocultos y diseño cómodo para uso diario y oficina.",
+          img: "https://images.unsplash.com/photo-1526481280695-3c687fd5432c?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p4",
+          name: "Cafetera Italiana 6 tazas",
+          category: "hogar",
+          priceCLP: 15990,
+          delivery: "48–96 hrs",
+          rating: 4.4,
+          reviews: 95,
+          tag: "Hogar",
+          desc: "Café intenso en minutos. Material resistente y fácil de limpiar.",
+          img: "https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p5",
+          name: "Lámpara LED Escritorio",
+          category: "hogar",
+          priceCLP: 12990,
+          delivery: "24–72 hrs",
+          rating: 4.3,
+          reviews: 142,
+          tag: "Oferta",
+          desc: "Luz regulable, bajo consumo y brazo flexible para estudio o trabajo.",
+          img: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p6",
+          name: "Cargador Rápido USB-C 30W",
+          category: "tecnologia",
+          priceCLP: 11990,
+          delivery: "24–48 hrs en Santiago",
+          rating: 4.8,
+          reviews: 410,
+          tag: "Rápido",
+          desc: "Carga eficiente y segura. Compatible con múltiples dispositivos.",
+          img: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p7",
+          name: "Botella Térmica 750ml",
+          category: "fitness",
+          priceCLP: 13990,
+          delivery: "48–72 hrs",
+          rating: 4.6,
+          reviews: 260,
+          tag: "Práctico",
+          desc: "Mantiene frío/caliente por horas. Ideal gym, oficina o ruta.",
+          img: "https://images.unsplash.com/photo-1526401485004-2aa6d8b9342d?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p8",
+          name: "Set Organizadores (x6)",
+          category: "hogar",
+          priceCLP: 16990,
+          delivery: "48–96 hrs",
+          rating: 4.2,
+          reviews: 88,
+          tag: "Orden",
+          desc: "Optimiza cajones y clóset. Material firme y fácil de limpiar.",
+          img: "https://images.unsplash.com/photo-1582582429415-1d3b0f4a7e6a?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p9",
+          name: "Mouse Inalámbrico Silencioso",
+          category: "tecnologia",
+          priceCLP: 9990,
+          delivery: "24–72 hrs",
+          rating: 4.4,
+          reviews: 330,
+          tag: "Silencioso",
+          desc: "Clic silencioso y agarre cómodo. Perfecto para oficina y home office.",
+          img: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p10",
+          name: "Banda Elástica Resistencia (Set)",
+          category: "fitness",
+          priceCLP: 10990,
+          delivery: "48–72 hrs",
+          rating: 4.5,
+          reviews: 201,
+          tag: "Entrena",
+          desc: "Set de bandas para fuerza y movilidad. Entrena donde quieras.",
+          img: "https://images.unsplash.com/photo-1599058917765-4f7d0f52b0f9?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p11",
+          name: "Gafas de Sol Polarizadas",
+          category: "accesorios",
+          priceCLP: 18990,
+          delivery: "48–96 hrs",
+          rating: 4.3,
+          reviews: 77,
+          tag: "Polarizado",
+          desc: "Protección UV y visión nítida. Estilo urbano para todo el día.",
+          img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=1200&q=80&auto=format&fit=crop",
+        },
+        {
+          id: "p12",
+          name: "Funda Notebook 14'' Premium",
+          category: "accesorios",
+          priceCLP: 17990,
+          delivery: "24–72 hrs",
+          rating: 4.6,
+          reviews: 116,
+          tag: "Protección",
+          desc: "Acolchado interno y cierre seguro. Ideal para transporte diario.",
+          img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&q=80&auto=format&fit=crop",
+        },
+      ];
+
+      // =========================
+      // HELPERS
+      // =========================
+      const moneyCLP = (n) =>
+        new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 }).format(n);
+
+      function starsFromRating(rating){
+        // Redondeo a 0.5 para una visual más estable
+        const rounded = Math.round(rating * 2) / 2;
+        const full = Math.floor(rounded);
+        const half = rounded % 1 !== 0;
+        let s = "★".repeat(full);
+        if (half) s += "½";
+        s += "☆".repeat(Math.max(0, 5 - full - (half ? 1 : 0)));
+        return s;
+      }
+
+      // =========================
+      // CART (simple)
+      // =========================
+      let cart = []; // {id, qty}
+      const cartCountEl = document.getElementById("cart-count");
+      const cartModal = document.getElementById("cartModal");
+      const cartBody = document.getElementById("cartBody");
+
+      function getQtyTotal(){
+        return cart.reduce((acc, i) => acc + i.qty, 0);
+      }
+      function updateCartBadge(){
+        cartCountEl.textContent = String(getQtyTotal());
+      }
+
+      function addToCart(productId){
+        const found = cart.find(i => i.id === productId);
+        if(found) found.qty += 1;
+        else cart.push({ id: productId, qty: 1 });
+        updateCartBadge();
+      }
+
+      function removeFromCart(productId){
+        cart = cart.filter(i => i.id !== productId);
+        updateCartBadge();
+        renderCart();
+      }
+
+      function changeQty(productId, delta){
+        const found = cart.find(i => i.id === productId);
+        if(!found) return;
+        found.qty += delta;
+        if(found.qty <= 0) removeFromCart(productId);
+        updateCartBadge();
+        renderCart();
+      }
+
+      function cartTotals(){
+        let subtotal = 0;
+        for(const item of cart){
+          const p = PRODUCTS.find(x => x.id === item.id);
+          if(p) subtotal += p.priceCLP * item.qty;
+        }
+        return { subtotal };
+      }
+
+      function renderCart(){
+        if(cart.length === 0){
+          cartBody.innerHTML = `<div class="empty">Tu carrito está vacío. Agrega productos desde el catálogo.</div>`;
+          return;
+        }
+
+        const rows = cart.map(item => {
+          const p = PRODUCTS.find(x => x.id === item.id);
+          if(!p) return "";
+          const line = p.priceCLP * item.qty;
+
+          return `
+            <div class="cartItem">
+              <div class="left">
+                <strong>${p.name}</strong>
+                <small>${moneyCLP(p.priceCLP)} · Cantidad: ${item.qty}</small>
+              </div>
+              <div style="display:flex; gap:8px; align-items:center;">
+                <button class="btnGhost" type="button" onclick="window.__changeQty('${p.id}', -1)">−</button>
+                <button class="btnGhost" type="button" onclick="window.__changeQty('${p.id}', 1)">+</button>
+                <button class="btnGhost" type="button" onclick="window.__removeFromCart('${p.id}')">Quitar</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        const { subtotal } = cartTotals();
+
+        cartBody.innerHTML = `
+          <div class="cartList">${rows}</div>
+          <div class="totals">
+            <div>
+              <div style="color:#9a9a9a; font-size:.92rem;">Total</div>
+              <div style="font-size:1.2rem; font-weight:900;">${moneyCLP(subtotal)}</div>
+            </div>
+            <button class="btnPrimary" type="button" onclick="alert('Demo: aquí iría el checkout (WebPay/Transferencia).')">
+              Finalizar compra
+            </button>
+          </div>
+        `;
+      }
+
+      // Exponer helpers para botones inline (simple)
+      window.__addToCart = addToCart;
+      window.__removeFromCart = removeFromCart;
+      window.__changeQty = changeQty;
+
+      // =========================
+      // RENDER PRODUCTS
+      // =========================
+      const grid = document.getElementById("productsGrid");
+      const resultsCount = document.getElementById("resultsCount");
+      const searchInput = document.getElementById("searchInput");
+      const chips = Array.from(document.querySelectorAll(".chip"));
+
+      let activeCategory = "all";
+
+      function productCardHTML(p){
+        const price = moneyCLP(p.priceCLP);
+        const stars = starsFromRating(p.rating);
+
+        return `
+          <article class="product" data-category="${p.category}" data-name="${p.name.toLowerCase()}">
+            <div class="thumb">
+              <img src="${p.img}" alt="${p.name} - imagen referencial" loading="lazy" />
+              <div class="tag">${p.tag}</div>
+            </div>
+
+            <div class="content">
+              <h4>${p.name}</h4>
+
+              <div class="priceRow">
+                <div class="price">${price}</div>
+                <div class="rating" title="Valoración ${p.rating} de 5">
+                  <span class="stars" aria-hidden="true">${stars}</span>
+                  <span>${p.rating} (${p.reviews})</span>
+                </div>
+              </div>
+
+              <p class="desc">${p.desc}</p>
+
+              <div class="meta" aria-label="Información de entrega y categoría">
+                <span class="badge">🚚 ${p.delivery}</span>
+                <span class="badge">🏷️ ${p.category}</span>
+              </div>
+
+              <div class="btnRow">
+                <button class="btnPrimary" type="button" onclick="window.__addToCart('${p.id}')">Agregar al carrito</button>
+                <button class="btnGhost" type="button" onclick="alert('Demo: aquí iría la página del producto: ${p.name}')">Ver</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderProducts(){
+        const q = (searchInput.value || "").trim().toLowerCase();
+
+        const filtered = PRODUCTS.filter(p => {
+          const matchCategory = activeCategory === "all" || p.category === activeCategory;
+          const matchQuery = q === "" || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+          return matchCategory && matchQuery;
+        });
+
+        grid.innerHTML = filtered.map(productCardHTML).join("");
+        resultsCount.textContent = `Mostrando ${filtered.length} producto${filtered.length === 1 ? "" : "s"}`;
+
+        // Actualiza SEO ItemList dinámico (mínimo viable)
+        updateJsonLd(filtered);
+      }
+
+      // =========================
+      // FILTERS + SEARCH
+      // =========================
+      chips.forEach(chip => {
+        chip.addEventListener("click", () => {
+          chips.forEach(c => c.classList.remove("active"));
+          chip.classList.add("active");
+          activeCategory = chip.dataset.filter;
+          renderProducts();
+        });
+      });
+
+      searchInput.addEventListener("input", () => renderProducts());
+
+      // =========================
+      // MODAL CART
+      // =========================
+      document.getElementById("openCartBtn").addEventListener("click", () => {
+        renderCart();
+        cartModal.showModal();
+      });
+      document.getElementById("closeCartBtn").addEventListener("click", () => {
+        cartModal.close();
+      });
+
+      // Cerrar modal al click fuera
+      cartModal.addEventListener("click", (e) => {
+        const rect = cartModal.getBoundingClientRect();
+        const inDialog = (
+          rect.top <= e.clientY && e.clientY <= rect.bottom &&
+          rect.left <= e.clientX && e.clientX <= rect.right
+        );
+        if(!inDialog) cartModal.close();
+      });
+
+      // =========================
+      // JSON-LD (SEO)
+      // =========================
+      function updateJsonLd(list){
+        const itemList = list.map((p, idx) => ({
+          "@type": "ListItem",
+          position: idx + 1,
+          item: {
+            "@type": "Product",
+            name: p.name,
+            image: [p.img],
+            description: p.desc,
+            category: p.category,
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "CLP",
+              price: p.priceCLP,
+              availability: "https://schema.org/InStock"
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: p.rating,
+              reviewCount: p.reviews
+            }
+          }
+        }));
+
+        const jsonld = {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "Tienda Online",
+              url: "https://tudominio.cl/",
+              email: "ventas@tudominio.cl"
+            },
+            {
+              "@type": "WebSite",
+              name: "Tienda Online",
+              url: "https://tudominio.cl/",
+              inLanguage: "es-CL"
+            },
+            {
+              "@type": "ItemList",
+              name: "Catálogo destacado",
+              itemListElement: itemList
+            }
+          ]
+        };
+
+        document.getElementById("seo-jsonld").textContent = JSON.stringify(jsonld);
+      }
+
+      // INIT
+      renderProducts();
+      updateCartBadge();
+      updateJsonLd(PRODUCTS);
+    </script>
+  </body>
+</html>
