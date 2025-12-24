@@ -3,59 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M-Prime | Tienda online</title>
 
-  <!-- SEO -->
-  <title> M-Prime | Tienda Online, productos con entrega rápida</title>
-  <meta name="description" content="Compra productos con precio claro, entrega estimada y valoraciones reales. Tienda online rápida y segura." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://tudominio.cl" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Tienda Online | Compra fácil" />
-  <meta property="og:description" content="Explora productos con envío rápido, precios claros y valoraciones reales." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1515169067865-5387ec356754?w=1200" />
-
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="estilos.css" />
 </head>
 
 <body>
 
-<header>
-  <div class="topbar">
-    <div class="brand">
-      <h1>Tienda Online</h1>
-      <p>Precio claro · Entrega rápida · Reseñas reales</p>
-    </div>
+<header class="header">
+  <div class="header-left">
+    <h1>M-Prime</h1>
+    <span>Precio claro · Entrega rápida · Reseñas reales</span>
+  </div>
 
-    <div class="actions">
-      <input id="searchInput" type="search" placeholder="Buscar producto..." />
-      <button class="cartBtn" onclick="openCart()">
-        🛒 <span id="cart-count">0</span>
-      </button>
-    </div>
+  <div class="header-right">
+    <input type="search" placeholder="Buscar producto..." id="searchInput">
+    <button class="cart-btn">🛒 <span id="cart-count">0</span></button>
   </div>
 </header>
 
 <main>
-  <h2>Productos destacados</h2>
-
-  <section id="productsGrid" class="products">
-    <!-- Productos renderizados por JS -->
-  </section>
+  <h2 class="section-title">Productos destacados</h2>
+  <section class="products" id="productsGrid"></section>
 </main>
 
-<footer>
-  <p>© 2025 Tienda Online · ventas@tudominio.cl</p>
-</footer>
-
-<!-- Modal carrito -->
-<dialog id="cartModal">
-  <h3>Tu carrito</h3>
-  <div id="cartBody"></div>
-  <button onclick="closeCart()">Cerrar</button>
-</dialog>
-
-<script src="app.js"></script>
+<script src="aplicacion.js"></script>
 </body>
 </html>
