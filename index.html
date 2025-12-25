@@ -3,69 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M-Prime | Lo que ves en YouTube, aquí lo compras</title>
 
-  <title>M-Prime | Tienda Oficial</title>
-  <meta name="description" content="M-Prime · Productos vistos en YouTube. Ropa, accesorios, kids y tecnología. Compra fácil por WhatsApp." />
+  <meta name="description" content="M-Prime · Productos vistos en YouTube · Tienda online para kids y familias" />
+  <meta name="robots" content="index,follow" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="theme-default">
+<body>
 
-  <!-- Fondo humo (decorativo) -->
-  <div class="smoke-bg"></div>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="#" class="logo">M-Prime</a>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <button class="home-btn" onclick="goHome()">M-Prime</button>
-
-      <ul class="nav-links">
-        <li onclick="filterCategory('all')">🔥 Destacados</li>
-        <li onclick="filterCategory('tech')">🎮 Tecnología</li>
-        <li onclick="filterCategory('kids')">🧸 Kids</li>
-        <li onclick="filterCategory('fashion')">👕 Ropa</li>
-        <li onclick="filterCategory('accessories')">🧢 Accesorios</li>
-      </ul>
-    </div>
-
-    <div class="nav-right">
-      <input id="searchInput" type="search" placeholder="Buscar producto..." />
-      <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button>
-    </div>
-  </nav>
-
-  <div class="nav-space"></div>
-
-  <!-- HERO -->
-  <header class="hero">
-    <h1>Lo que ves en <span>YouTube</span>, aquí lo compras</h1>
-    <p>Productos reales, virales y recomendados por la comunidad</p>
-    <button onclick="scrollToProducts()">Ver productos</button>
-  </header>
-
-  <!-- PRODUCTOS -->
-  <main id="productos">
-    <h2>Productos destacados</h2>
-    <section id="productsGrid" class="products"></section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2025 M-Prime · Compra segura · WhatsApp
-  </footer>
-
-  <!-- CARRITO -->
-  <div id="cartModal" class="cart-modal">
-    <div class="cart-content">
-      <h3>🛒 Tu carrito</h3>
-      <div id="cartItems"></div>
-      <strong>Total: <span id="cartTotal">$0</span></strong>
-      <a id="whatsappBtn" target="_blank">Comprar por WhatsApp</a>
-      <button onclick="toggleCart()">Cerrar</button>
-    </div>
+    <ul class="nav-links">
+      <li data-cat="all" class="active">Destacados</li>
+      <li data-cat="tech">Tecnología</li>
+      <li data-cat="kids">Kids</li>
+      <li data-cat="ropa">Ropa</li>
+      <li data-cat="accesorios">Accesorios</li>
+    </ul>
   </div>
 
-  <script src="app.js"></script>
+  <div class="nav-right">
+    <input type="search" id="searchInput" placeholder="Buscar producto…" />
+    <button id="cartBtn" class="cart-btn">🛒 <span id="cartCount">0</span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Lo que ves en <span>YouTube</span>, aquí lo compras</h1>
+    <p>Productos reales, virales y recomendados por la comunidad</p>
+    <a href="#productos" class="cta">Ver productos</a>
+  </div>
+</header>
+
+<!-- SECCIÓN YOUTUBE -->
+<section class="youtube-section">
+  <h2>🔥 Visto en el canal de Dominick</h2>
+  <p>Productos que aparecen o se recomiendan en YouTube</p>
+</section>
+
+<!-- PRODUCTOS -->
+<main id="productos" class="container">
+  <h2 class="section-title">Productos destacados</h2>
+  <section id="productsGrid" class="products"></section>
+</main>
+
+<!-- BENEFICIOS -->
+<section class="benefits">
+  <div class="benefit">🎮 Pensado para niños</div>
+  <div class="benefit">👨‍👩‍👦 Compra segura para padres</div>
+  <div class="benefit">🚚 Envíos claros</div>
+  <div class="benefit">🎥 Probado en YouTube</div>
+</section>
+
+<!-- CARRITO -->
+<div id="cartPanel" class="cart-panel hidden">
+  <h3>🛒 Tu carrito</h3>
+  <ul id="cartItems"></ul>
+  <div class="cart-total">
+    Total: <strong id="cartTotal">$0</strong>
+  </div>
+  <a id="whatsappBtn" target="_blank" class="whatsapp-btn">Comprar por WhatsApp</a>
+  <button id="closeCart" class="close-cart">Cerrar</button>
+</div>
+
+<footer>
+  © 2025 M-Prime · Compra segura · Atención directa por WhatsApp
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
