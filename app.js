@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const clp = n => new Intl.NumberFormat("es-CL",{style:"currency",currency:"CLP"}).format(n);
 
   function render(list){
-    grid.innerHTML = list.map(p=>`
+    grid.innerHTML = list.map(p => `
       <article class="product">
         <div class="product-img">
           <img src="${p.img}" alt="${p.name}">
@@ -32,8 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   render(products);
 
   window.filterCategory = cat => {
-    if(cat==="all") render(products);
-    else render(products.filter(p=>p.cat===cat));
+    render(cat==="all" ? products : products.filter(p=>p.cat===cat));
   };
 
   window.goHome = () => window.scrollTo({top:0,behavior:"smooth"});
@@ -50,10 +49,22 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function renderCart(){
-    document.getElementById("cartItems").innerHTML =
-      cart.map(p=>`<p>• ${p.name} – ${clp(p.price)}</p>`).join("");
-    document.getElementById("cartTotal").textContent =
-      clp(cart.reduce((s,p)=>s+p.price,0));
+    const items = document.getElementById("cartItems");
+    const total = cart.reduce((s,p)=>s+p.price,0);
+    items.innerHTML = cart.length
+      ? cart.map(p=>`
+        <div class="cart-item">
+          <span>${p.name}</span>
+          <strong>${clp(p.price)}</strong>
+        </div>`).join("")
+      : "<p style='text-align:center;color:#aaa'>Tu carrito está vacío </p>";
+
+    document.getElementById("cartTotal").textContent = clp(total);
+
+    document.getElementById("whatsappBtn").href =
+      `https://wa.me/569XXXXXXXX?text=Hola, quiero comprar:%0A` +
+      cart.map(p=>`- ${p.name} (${clp(p.price)})`).join("%0A") +
+      `%0ATotal: ${clp(total)}`;
   }
 
   window.addEventListener("scroll",()=>{
