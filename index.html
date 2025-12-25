@@ -5,18 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>M-Prime | Lo que ves en YouTube, aquí lo compras</title>
-  <meta name="description" content="Gadgets, juguetes y productos virales vistos en YouTube. Compra fácil y segura.">
+  <meta name="description" content="Productos virales, gadgets y regalos vistos en YouTube. Compra fácil y segura.">
 
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="nav-left">
     <button class="home-btn" onclick="goHome()">M-Prime</button>
-
     <ul class="nav-links">
       <li onclick="filterCategory('all')"> Destacados</li>
       <li onclick="filterCategory('tech')"> Tecnología</li>
@@ -34,7 +32,6 @@
   </div>
 </nav>
 
-<!-- ESPACIADOR NAVBAR -->
 <div class="nav-space"></div>
 
 <main>
@@ -51,8 +48,12 @@
   <div class="cart-content">
     <h3> Tu carrito</h3>
     <div id="cartItems"></div>
-    <div class="cart-total">Total: <span id="cartTotal">$0</span></div>
-    <button class="checkout-btn">Comprar por WhatsApp</button>
+    <div class="cart-total">
+      Total: <span id="cartTotal">$0</span>
+    </div>
+    <a id="whatsappBtn" class="checkout-btn" target="_blank">
+      Comprar por WhatsApp
+    </a>
     <button class="close-btn" onclick="toggleCart()">Cerrar</button>
   </div>
 </div>
