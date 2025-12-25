@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>M-Prime | Juguetes y Gadgets que salen en YouTube</title>
+  <meta name="description" content="Gadgets y productos que ves en YouTube. Compra fácil, segura y con envío rápido.">
+  <meta name="robots" content="index,follow">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    <h1>M-Prime</h1>
+    <span>Lo que ves en YouTube, aquí lo compras</span>
+  </div>
+
+  <div class="header-actions">
+    <input type="search" placeholder="Buscar producto...">
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <h2 class="section-title">🔥 Productos Destacados</h2>
+  <section id="productsGrid" class="products"></section>
+</main>
+
+<footer>
+  © 2025 M-Prime · Compra segura · Envíos a todo Chile
+</footer>
+
+<!-- CARRITO -->
+<div id="cartModal" class="cart-modal">
+  <div class="cart-content">
+    <h3>🛒 Tu carrito</h3>
+    <div id="cartItems"></div>
+    <div class="cart-total">
+      Total: <span id="cartTotal">$0</span>
+    </div>
+    <button class="checkout-btn">Comprar por WhatsApp</button>
+    <button class="close-btn" onclick="toggleCart()">Cerrar</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
