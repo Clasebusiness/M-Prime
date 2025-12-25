@@ -4,36 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>M-Prime | Lo que ves en YouTube, aquí lo compras</title>
-  <meta name="description" content="M-Prime: ropa, accesorios, gadgets y productos virales. Envíos rápidos, precio claro y compra por WhatsApp. Lo que ves en YouTube, aquí lo compras." />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://tudominio.cl" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="M-Prime | Lo que ves en YouTube, aquí lo compras" />
-  <meta property="og:description" content="Ropa, accesorios, gadgets y productos virales. Envíos rápidos y compra por WhatsApp." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200" />
+  <title>M-Prime | Tienda Oficial</title>
+  <meta name="description" content="M-Prime · Productos vistos en YouTube. Ropa, accesorios, kids y tecnología. Compra fácil por WhatsApp." />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body class="theme-default">
 
-  <!-- Fondo humo sutil -->
-  <div class="smoke-bg" aria-hidden="true"></div>
+  <!-- Fondo humo (decorativo) -->
+  <div class="smoke-bg"></div>
 
   <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar">
     <div class="nav-left">
-      <button class="home-btn" onclick="goHome()" aria-label="Ir al inicio">
-        <img class="brand-logo" src="assets/logo-mprime.png" alt="M-Prime logo" onerror="this.style.display='none';document.getElementById('brandText').style.display='inline-flex';" />
-        <span id="brandText" class="brand-text" style="display:none;">M-Prime</span>
-      </button>
+      <button class="home-btn" onclick="goHome()">M-Prime</button>
 
-      <ul class="nav-links" aria-label="Categorías">
-        <li class="chip chip-hot" onclick="filterCategory('all')"> Destacados</li>
-        <li class="chip chip-tech" onclick="filterCategory('tech')"> Tecnología</li>
-        <li class="chip chip-kids" onclick="filterCategory('kids')"> Kids</li>
-        <li class="chip chip-fashion" onclick="filterCategory('fashion')"> Ropa</li>
-        <li class="chip chip-accessories" onclick="filt
+      <ul class="nav-links">
+        <li onclick="filterCategory('all')">🔥 Destacados</li>
+        <li onclick="filterCategory('tech')">🎮 Tecnología</li>
+        <li onclick="filterCategory('kids')">🧸 Kids</li>
+        <li onclick="filterCategory('fashion')">👕 Ropa</li>
+        <li onclick="filterCategory('accessories')">🧢 Accesorios</li>
+      </ul>
+    </div>
+
+    <div class="nav-right">
+      <input id="searchInput" type="search" placeholder="Buscar producto..." />
+      <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button>
+    </div>
+  </nav>
+
+  <div class="nav-space"></div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Lo que ves en <span>YouTube</span>, aquí lo compras</h1>
+    <p>Productos reales, virales y recomendados por la comunidad</p>
+    <button onclick="scrollToProducts()">Ver productos</button>
+  </header>
+
+  <!-- PRODUCTOS -->
+  <main id="productos">
+    <h2>Productos destacados</h2>
+    <section id="productsGrid" class="products"></section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 M-Prime · Compra segura · WhatsApp
+  </footer>
+
+  <!-- CARRITO -->
+  <div id="cartModal" class="cart-modal">
+    <div class="cart-content">
+      <h3>🛒 Tu carrito</h3>
+      <div id="cartItems"></div>
+      <strong>Total: <span id="cartTotal">$0</span></strong>
+      <a id="whatsappBtn" target="_blank">Comprar por WhatsApp</a>
+      <button onclick="toggleCart()">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
