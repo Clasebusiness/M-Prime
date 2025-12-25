@@ -4,31 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>M-Prime | Juguetes y Gadgets que salen en YouTube</title>
-  <meta name="description" content="Gadgets y productos que ves en YouTube. Compra fácil, segura y con envío rápido.">
-  <meta name="robots" content="index,follow">
+  <title>M-Prime | Lo que ves en YouTube, aquí lo compras</title>
+  <meta name="description" content="Gadgets, juguetes y productos virales vistos en YouTube. Compra fácil y segura.">
 
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<header class="header">
-  <div class="logo">
-    <h1>M-Prime</h1>
-    <span>Lo que ves en YouTube, aquí lo compras</span>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-left">
+    <button class="home-btn" onclick="goHome()">M-Prime</button>
+
+    <ul class="nav-links">
+      <li onclick="filterCategory('all')"> Destacados</li>
+      <li onclick="filterCategory('tech')"> Tecnología</li>
+      <li onclick="filterCategory('kids')"> Kids</li>
+      <li onclick="filterCategory('school')"> Escolar</li>
+      <li onclick="filterCategory('home')"> Hogar</li>
+    </ul>
   </div>
 
-  <div class="header-actions">
+  <div class="nav-right">
     <input type="search" placeholder="Buscar producto...">
     <button class="cart-btn" onclick="toggleCart()">
        <span id="cart-count">0</span>
     </button>
   </div>
-</header>
+</nav>
+
+<!-- ESPACIADOR NAVBAR -->
+<div class="nav-space"></div>
 
 <main>
-  <h2 class="section-title"> Productos Destacados</h2>
+  <h2 class="section-title"> Productos destacados</h2>
   <section id="productsGrid" class="products"></section>
 </main>
 
@@ -41,9 +51,7 @@
   <div class="cart-content">
     <h3> Tu carrito</h3>
     <div id="cartItems"></div>
-    <div class="cart-total">
-      Total: <span id="cartTotal">$0</span>
-    </div>
+    <div class="cart-total">Total: <span id="cartTotal">$0</span></div>
     <button class="checkout-btn">Comprar por WhatsApp</button>
     <button class="close-btn" onclick="toggleCart()">Cerrar</button>
   </div>
