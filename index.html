@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>M-Prime | Lo que ves en YouTube, aquí lo compras</title>
 
-  <meta name="description" content="M-Prime · Productos vistos en YouTube · Tienda online para kids y familias" />
-  <meta name="robots" content="index,follow" />
+  <title>M-Prime | Lo que ves en YouTube, aquí lo compras</title>
+  <meta name="description" content="Productos recomendados por el canal Dominick Crea. Tecnología, kids, ropa y accesorios con envío en Chile." />
+  <meta name="robots" content="index, follow" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -14,67 +14,55 @@
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar">
+<header class="navbar">
   <div class="nav-left">
     <a href="#" class="logo">M-Prime</a>
 
-    <ul class="nav-links">
-      <li data-cat="all" class="active">Destacados</li>
-      <li data-cat="tech">Tecnología</li>
-      <li data-cat="kids">Kids</li>
-      <li data-cat="ropa">Ropa</li>
-      <li data-cat="accesorios">Accesorios</li>
-    </ul>
+    <nav class="menu">
+      <button data-category="all" class="active">Destacados</button>
+      <button data-category="tech">Tecnología</button>
+      <button data-category="kids">Kids</button>
+      <button data-category="ropa">Ropa</button>
+      <button data-category="acc">Accesorios</button>
+    </nav>
   </div>
 
   <div class="nav-right">
-    <input type="search" id="searchInput" placeholder="Buscar producto…" />
-    <button id="cartBtn" class="cart-btn">🛒 <span id="cartCount">0</span></button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-content">
-    <h1>Lo que ves en <span>YouTube</span>, aquí lo compras</h1>
-    <p>Productos reales, virales y recomendados por la comunidad</p>
-    <a href="#productos" class="cta">Ver productos</a>
+    <input id="searchInput" type="search" placeholder="Buscar producto…" />
+    <button class="cart-btn" id="openCart">
+      🛒 <span id="cart-count">0</span>
+    </button>
   </div>
 </header>
 
-<!-- SECCIÓN YOUTUBE -->
-<section class="youtube-section">
-  <h2>🔥 Visto en el canal de Dominick</h2>
-  <p>Productos que aparecen o se recomiendan en YouTube</p>
+<!-- HERO -->
+<section class="hero">
+  <h1>Lo que ves en <span>YouTube</span>, aquí lo compras</h1>
+  <p>Productos reales, recomendados por la comunidad de Dominick</p>
+  <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+    Ver productos
+  </button>
 </section>
 
-<!-- PRODUCTOS -->
-<main id="productos" class="container">
-  <h2 class="section-title">Productos destacados</h2>
-  <section id="productsGrid" class="products"></section>
+<!-- PRODUCTS -->
+<main id="products" class="products-section">
+  <h2>Productos destacados</h2>
+  <section id="productsGrid" class="products-grid"></section>
 </main>
 
-<!-- BENEFICIOS -->
-<section class="benefits">
-  <div class="benefit">🎮 Pensado para niños</div>
-  <div class="benefit">👨‍👩‍👦 Compra segura para padres</div>
-  <div class="benefit">🚚 Envíos claros</div>
-  <div class="benefit">🎥 Probado en YouTube</div>
-</section>
-
-<!-- CARRITO -->
-<div id="cartPanel" class="cart-panel hidden">
-  <h3>🛒 Tu carrito</h3>
-  <ul id="cartItems"></ul>
-  <div class="cart-total">
-    Total: <strong id="cartTotal">$0</strong>
+<!-- CART -->
+<aside id="cartPanel" class="cart-panel">
+  <h3>Tu carrito</h3>
+  <div id="cartItems"></div>
+  <div class="cart-footer">
+    <strong>Total: <span id="cartTotal">$0</span></strong>
+    <button id="buyBtn">Comprar por WhatsApp</button>
+    <button class="close-cart">Cerrar</button>
   </div>
-  <a id="whatsappBtn" target="_blank" class="whatsapp-btn">Comprar por WhatsApp</a>
-  <button id="closeCart" class="close-cart">Cerrar</button>
-</div>
+</aside>
 
 <footer>
-  © 2025 M-Prime · Compra segura · Atención directa por WhatsApp
+  © 2025 M-Prime · Inspirado en el canal Dominick Crea · Compra segura
 </footer>
 
 <script src="app.js"></script>
